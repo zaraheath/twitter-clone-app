@@ -1,0 +1,21 @@
+= content_for :sidebar do
+  .well.sidebar-nav
+    - if user_signed_in?
+      = follow_or_unfollow_link(@user)
+    %p
+    %p
+      = link_to "Followers", followers_user_path(@user)
+      = @user.followers.count
+    %p
+      = link_to "Following", following_user_path(@user)
+      = @user.followed_users.count
+
+.page-header
+  %h1
+    - if current_user.eql?(@user)
+      = t("my_messages")
+      = link_to "New message", new_message_path, :class => 'btn btn-primary'
+    - else
+      = t("user_messages", user: @user.username)
+  - @messages.each do |message|
+    = render partial: 'messages/message', locals: {message: message}

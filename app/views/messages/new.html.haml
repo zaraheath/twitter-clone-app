@@ -1,0 +1,14 @@
+.page-header
+  %h1= "New message"
+= form_for @message, :html => { :class => 'form-horizontal' } do |f|
+  %ul
+    - @message.errors.full_messages.each do |msg|
+      %li= msg
+  .form-group
+    = f.label :text, :class => 'control-label col-md-2'
+    .col-md-10
+      = f.text_area :text, :class => 'text_field form-control'
+  .form-group
+    .col-md-offset-2.col-md-10
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), root_path, :class => 'btn btn-default'

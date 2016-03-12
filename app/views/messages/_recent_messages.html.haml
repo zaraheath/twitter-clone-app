@@ -1,0 +1,4 @@
+- @recent_messages.each_slice(2) do |m1,m2|
+  .row
+    = render partial: 'messages/random_message', locals: {message: m1}
+    = render partial: 'messages/random_message', locals: {message: m2}
