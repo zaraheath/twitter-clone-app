@@ -37,3 +37,5 @@ bower.json
 #Ignore byebug
 .byebug_history
 
+.idea
+
