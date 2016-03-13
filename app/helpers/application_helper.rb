@@ -1,7 +1,9 @@
 module ApplicationHelper
 
   def follow_or_unfollow_link(user)
-    (current_user != user && current_user.followed_users.include?(user)) ? unfollow_link(user) : follow_link(user)
+    if current_user != user
+      current_user.followed_users.include?(user) ? unfollow_link(user) : follow_link(user)
+    end
   end
 
   def follow_link(user)
